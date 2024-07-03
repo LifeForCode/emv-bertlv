@@ -2,7 +2,7 @@ package io.github.binaryfoo.decoders.bit
 
 import io.github.binaryfoo.bit.EmvBit
 import io.github.binaryfoo.bit.fromHex
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern

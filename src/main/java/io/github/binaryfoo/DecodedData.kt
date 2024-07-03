@@ -6,7 +6,7 @@ import io.github.binaryfoo.hex.HexDumpElement
 import io.github.binaryfoo.tlv.BerTlv
 import io.github.binaryfoo.tlv.ISOUtil
 import io.github.binaryfoo.tlv.Tag
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import java.util.*
 
 /**
