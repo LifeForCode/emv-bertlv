@@ -37,51 +37,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-            pom {
-                name = 'EMV BER-TLV Decoder'
-                description = project.description
-                url = 'https://github.com/binaryfoo/emv-bertlv'
-                licenses {
-                    license {
-                        name = 'The MIT License (MIT)'
-                        url = 'http://opensource.org/licenses/MIT'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'wscurrie'
-                        name = 'Will Currie'
-                        email = 'wscurrie@gmail.com'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:git@github.com:binaryfoo/emv-bertlv.git'
-                    developerConnection = 'scm:git:git@github.com:binaryfoo/emv-bertlv.git'
-                    url = 'https://github.com/binaryfoo/emv-bertlv'
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            url = uri('https://oss.sonatype.org/content/repositories/snapshots')
-            credentials {
-                username = project.findProperty("ossrhUsername") ?: ""
-                password = project.findProperty("ossrhPassword") ?: ""
-            }
-        }
-    }
-}
-
-signing {
-    useInMemoryPgpKeys(findProperty('signing.keyId'), findProperty('signing.secretKeyRingFile'), findProperty('signing.password'))
-    sign publishing.publications.mavenJava
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
