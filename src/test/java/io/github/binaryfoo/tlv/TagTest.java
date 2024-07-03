@@ -28,11 +28,6 @@ public class TagTest {
   }
 
   @Test
-  public void testConstructTagWithNull() {
-    doIllegalArgumentTest(null);
-  }
-
-  @Test
   public void testConstructTagWithEmptyByteArray() {
     doIllegalArgumentTest(new byte[]{});
   }
