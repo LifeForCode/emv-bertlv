@@ -29,7 +29,7 @@ dependencies {
     testImplementation 'org.easymock:easymockclassextension:2.5.2'
     testImplementation 'org.codehaus.groovy:groovy-all:2.3.6'
     testImplementation 'com.xlson.groovycsv:groovycsv:1.0'
-    testImplementation 'org.jsoup:jsoup:1.8.1'
+    testImplementation 'org.jsoup:jsoup:1.17.2'
 }
 
 java {
