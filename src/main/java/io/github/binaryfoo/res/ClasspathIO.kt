@@ -1,22 +1,19 @@
-package io.github.binaryfoo.res;
+package io.github.binaryfoo.res
 
-import org.apache.commons.io.IOUtils;
+import java.io.InputStream
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+object ClasspathIO {
 
-public class ClasspathIO {
+    fun readLines(fileName: String): List<String> =
+        try {
+            open(fileName).bufferedReader().use {
+                it.readLines()
+            }
+        } catch (e: Exception) {
+            throw RuntimeException("Failed to read $fileName", e)
+        }
 
-  public static List<String> readLines(String fileName) {
-    try (InputStream in = open(fileName)) {
-      return IOUtils.readLines(in);
-    } catch (IOException e) {
-      throw new RuntimeException("Failed to read " + fileName, e);
-    }
-  }
-
-  public static InputStream open(String fileName) {
-    return ClasspathIO.class.getClassLoader().getResourceAsStream(fileName);
-  }
+    fun open(fileName: String): InputStream =
+        this::class.java.classLoader.getResourceAsStream(fileName)
+            ?: throw IllegalStateException("Cannot open file $fileName")
 }

@@ -7,8 +7,6 @@ import io.github.binaryfoo.decoders.bit.BitStringField
 import io.github.binaryfoo.decoders.bit.EmvBitStringParser
 import io.github.binaryfoo.res.ClasspathIO
 import io.github.binaryfoo.tlv.ISOUtil
-import org.apache.commons.io.IOUtils
-import java.io.IOException
 import java.util.*
 
 /**
@@ -23,18 +21,10 @@ import java.util.*
  */
 open class EmvBitStringDecoder(fileName: String, val showFieldHexInDecoding: Boolean) : Decoder {
 
-  private val bitMappings: List<BitStringField>
+  private val bitMappings: List<BitStringField> = EmvBitStringParser.parse(ClasspathIO.readLines(fileName))
   private val maxLength: Int
 
   init {
-    val input = ClasspathIO.open(fileName)
-    try {
-      bitMappings = EmvBitStringParser.parse(IOUtils.readLines(input))
-    } catch (e: IOException) {
-      throw RuntimeException(e)
-    } finally {
-      IOUtils.closeQuietly(input)
-    }
     this.maxLength = findMaxLengthInBytes() * 2
   }
 
